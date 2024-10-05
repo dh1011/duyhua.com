@@ -3,124 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duy Hua - Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>C:\Users\duy></title>
     <style>
-        @keyframes matrixRain {
-            0% { transform: translateY(-100%); opacity: 0; }
-            100% { transform: translateY(100vh); opacity: 0.8; }
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
         body {
-            font-family: 'VT323', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            color: #0a0a0a;
-            position: relative;
-            overflow: hidden;
+            background-color: black;
+            color: #00FF00;
+            font-family: 'MS-DOS', 'Courier New', Courier, monospace;
+            padding: 20px;
         }
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: -1;
+        .console {
+            white-space: pre;
         }
-        .matrix-rain {
-            position: absolute;
-            color: #1a1a1a;
-            font-size: 1rem;
-            line-height: 1;
-            opacity: 0;
-        }
-        .content {
-            text-align: center;
-            z-index: 1;
-        }
-        h1 {
-            margin-bottom: 0.25rem;
-            font-size: 3rem;
-            letter-spacing: 1px;
-        }
-        .pronunciation {
-            margin: 0.25rem 0;
-            font-size: 1.5rem;
-            opacity: 0.8;
-        }
-        .job-title {
-            margin: 0.5rem 0;
-            font-size: 1.3rem;
-            opacity: 0.8;
-        }
-        .cursor {
+        .blinking-cursor {
             display: inline-block;
             width: 10px;
-            height: 1.5rem;
-            background-color: #0a0a0a;
-            margin-left: 5px;
-            animation: blink 0.7s infinite;
+            height: 20px;
+            background-color: #00FF00;
+            animation: blink 1s step-start infinite;
+            vertical-align: bottom;
         }
-        .email {
-            display: inline-block;
-            margin-top: 1rem;
-            color: #0a0a0a;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        @keyframes blink {
+            50% { opacity: 0; }
         }
-        .email:hover {
-            color: #2a6496;
-        }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            .pronunciation {
-                font-size: 1.3rem;
-            }
-            .job-title {
-                font-size: 1.1rem;
-            }
+    @font-face {
+            font-family: 'MS-DOS';
+            src: url('font.ttf') format('truetype');
         }
     </style>
 </head>
 <body>
-    <div class="matrix-bg" id="matrix-bg"></div>
-    <div class="content">
-        <h1>Duy Hua<span class="cursor"></span></h1>
-        <p class="pronunciation">/yuee hwa/</p>
-        <p class="job-title">Software Engineer</p>
-        <a href="mailto:mail@duyhua.com" class="email">mail@duyhua.com</a>
+    <div class="console">
+        C:\Users\duy>cat info.txt
+        <br><br>
+        DUY HUA<br>
+        /yuee hwa/<br>
+        Software Engineer<br>
+        <a href="mailto:mail@duyhua.com" style="color: #00FF00; text-decoration: none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">mail@duyhua.com</a><br>
+        <br>
+        C:\Users\duy><span class="blinking-cursor" style="border-bottom: 2px solid #00FF00; width: 8px; height: auto; background-color: transparent;"></span>
     </div>
-    <script>
-        function createMatrixRain() {
-            const bg = document.getElementById('matrix-bg');
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
-            const rainDrops = 200;
-
-            for (let i = 0; i < rainDrops; i++) {
-                const drop = document.createElement('div');
-                drop.className = 'matrix-rain';
-                drop.style.left = `${Math.random() * 100}%`;
-                drop.style.animationDelay = `${Math.random() * 5}s`;
-                drop.style.animationDuration = `${5 + Math.random() * 10}s`;
-                drop.style.animationName = 'matrixRain';
-                drop.style.animationIterationCount = 'infinite';
-                drop.style.animationTimingFunction = 'linear';
-                drop.textContent = characters[Math.floor(Math.random() * characters.length)];
-                bg.appendChild(drop);
-            }
-        }
-
-        createMatrixRain();
-    </script>
 </body>
 </html>
